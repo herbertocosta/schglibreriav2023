@@ -1,0 +1,146 @@
+/* REVISAR REPETICIONES CON EL BLOQUE POSTERIOR*/
+
+* {
+    padding: 0;
+    margin: 0;
+  }
+
+  body{
+    background-image: url(/static/img/libreria.jpg);
+    background-size: cover;
+    
+  }
+
+  .wrapper {
+    width: 98%;
+    margin: auto;
+    overflow:hidden;
+  }
+
+  header {
+    background:rgb(83, 33, 33);
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+  }
+  
+  nav {
+    float: left; 
+  }
+  nav ul {
+    list-style: none;
+    overflow: hidden; 
+  }
+  nav ul li {
+    float: left;
+    font-family: candara;
+    font-size: 16px;
+  }
+  nav ul li a {
+    display: block; 
+    padding: 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  nav ul li:hover {
+    background: #412d2d;
+  }
+
+.salir{
+  background-color: darkgoldenrod;
+}
+
+/* REVISAR REPETICIONES CON EL BLOQUE ANTERIOR */
+
+* {
+    box-sizing: border-box;
+}
+
+.form-box {
+	background-color: rgba(0, 0, 0, 0.6);
+	margin: auto auto;
+	padding: 40px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgb(180, 141, 141);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 500px;
+	height: 430px;
+}
+.form-box:before {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	content: "";
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	display: block;
+	filter: blur(3px);
+}
+.form-box .header-text {
+	font-size: 32px;
+	font-weight: 600;
+	padding-bottom: 30px;
+	text-align: center;
+	color:brown
+}
+.form-box input {
+	margin: 10px 0px;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	width: 100%;
+	font-size: 18px;
+}
+
+.form-box input[type=checkbox] {
+	display: none;
+}
+
+.form-box label:before {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 5px;
+	position: absolute;
+	left: 0;
+	bottom: 1px;
+	background-color: #ddd;
+}
+.form-box input[type=checkbox]:checked+label:before {
+	content: "\2713";
+	font-size: 20px;
+	color: #000;
+	text-align: center;
+	line-height: 20px;
+}
+.form-box span {
+	font-size: 14px;
+	color:white;
+}
+
+.form-box button {
+	background-color:brown;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 100%;
+	font-size: 18px;
+	padding: 10px;
+	margin: 20px 0px;
+	text-align: center;
+}
+
+a{
+	color:brown
+}

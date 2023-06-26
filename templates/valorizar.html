@@ -1,0 +1,83 @@
+{% extends "mastertemplate.html" %}
+
+{% block head %}
+<title>VAORIZAR MATERIALES</title>
+{% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/estilosSass.css')}}">
+{% endblock %}
+
+{% block header %}
+{% for opcion in options %}
+<li class="nav-item"><a href="{{url_for(opcion.1)}}">{{opcion.0}} <i class="{{opcion.2}}"></i></a></li>
+{% endfor %}
+{% endblock %}
+{% block body %}
+<div class="row">
+    <!-- MENSAJES DE ERROR-->
+<div class="col-md-5">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% if mensaje.0 %}
+        {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert"> -->
+            <!-- <div class="alert alert-success alert-dismissible fade show" role="alert"> -->
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if mensaje.1 %}
+        {% for message in messages %}
+        <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert"> -->
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <!-- <div class="alert alert-success alert-dismissible fade show" role="alert"> -->
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endif %}
+        {% endwith %}
+</div>
+    <table class="body-table table">
+        <thead>
+            <tr>
+                <th class="col-md-1" scope="col">#</th>
+                <th class="col-md-4" scope="col">TÍTULO</th>
+                <th class="col-md-3" scope="col">CURSO</th>
+                <th class="col-md-3" scope="col">MATERIA</th>
+                <th class="col-md-3" scope="col">PROFESOR</th>
+                <th class="col-md-1" scope="col">VOLUMEN</th>
+                <th class="col-md-1" scope="col">VALOR</th>
+                <th class="col-md-1 text-center" scope="col">OP</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dato in listmaterial %}
+            <tr>
+            <form action="" method="POST">
+                <td class="col-md-1">{{dato.0}}</td>
+                <td class="col-md-4">{{dato.1}}</td>
+                <td class="col-md-3">{{dato.2}}</td>
+                <td class="col-md-3">{{dato.2}}</td>
+                <td class="col-md-3">{{dato.3}}</td>
+                <td class="col-md-1"><input type="number" name="volumen"></td>
+                <td class="col-md-1"><input type="number" name="valor"></td>
+                <td class="col-md-1"><button class="btn btn-success procesar" type="submit" value="{{dato.0}}"
+                        formaction="/lib_valorupd/{{dato.0}}"><i class="bi bi-journal-check"></i></button></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
+
+    {% block footer %}
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    {% endblock %}

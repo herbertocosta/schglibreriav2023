@@ -1,0 +1,74 @@
+{% extends "mastertemplate.html" %}
+
+{% block head%}
+    <title>DOCENTE - SUBIR MATERIAL</title>
+{% endblock %}
+
+{% block estilos%}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/estilosSass.css')}}"> 
+{% endblock %}
+
+{% block header %}
+    {% for opcion in options %}
+        <li><a href="{{url_for(opcion.1)}}">{{opcion.0}} <i class="{{opcion.2}}"></i></a></li>
+    {% endfor %}
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <!-- MENSAJES DE ERROR-->
+        <div class="col-md-5">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% if mensaje.0 %}
+                        {% for message in messages %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if mensaje.1 %}
+                        {% for message in messages %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    <div class="form-box container mt-5 card bg-secondary p-3">
+        <form class="justify-content-center" action="/doc_uploadfile" method="POST" enctype="multipart/form-data">
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" id="titulo" placeholder="Ingrese el Título" name="titulo">
+            </div>
+            <div class="mb-3">
+                <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example" name="curso" id="curso">
+                    <option selected>Selccione el Curso</option>
+                    {% for cursos in listcursos %}
+                    <option value="{{cursos.0}}">{{cursos.0}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example" name="materia" id="materia">
+                    <option selected>Selccione la Asignatura</option>
+                    {% for materias in listmaterias %}
+                    <option value="{{materias.0}}">{{materias.0}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <input type="file" class="form-control" id="customFile" name="customFile">
+            </div>
+            <div class="d-flex flex-row-reverse">
+                <button type="submit" class="btn btn-primary ">Confirmar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

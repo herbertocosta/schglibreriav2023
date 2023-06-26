@@ -1,0 +1,88 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: candara;
+  }
+  body{
+    background-image: url(/Static/img/libreria.jpg);
+    background-size: cover;
+    
+    
+  } 
+  .wrapper {
+    width: 80%;
+    margin: auto;
+    overflow:hidden;
+  }
+  header {
+    background:rgb(83, 33, 33);
+    width: 100%;
+    /*position: fixed;*/
+    z-index: 10;
+  }
+  nav {
+    top: -300px;
+  }
+  nav ul {
+    list-style: none;
+    overflow: hidden; 
+  }
+  nav ul li {
+    float: left;
+    font-family: candara;
+    font-size: 16px;
+  }
+  nav ul li a {
+    display: block; 
+    padding: 20px;
+    color: rgb(236, 231, 231);
+    text-decoration: none;
+    
+  }
+  nav ul li:hover {
+    background: #412d2d;
+  }
+  table{
+    position: relative;
+    float: left;
+  }
+ .solicitar{
+   background-color: rgb(23, 139, 0);
+   color: white;
+   width: 200px;
+   height: 40px;
+   font-size: 20px;
+ }
+ .cancelar{
+   background-color: darkred;
+   color: white;
+   width: 200px;
+   height: 40px;
+   font-size: 20px;
+ }
+ .reservar{
+   background-color: rgba(30, 27, 219, 0.856);
+   color: white;
+   width: 200px;
+   height: 40px;
+   font-size: 20px;
+ }
+ .cabecera{
+   background-color: white;
+   width: 700px;
+   height: 40px;
+   letter-spacing: none;
+   font-size: 25px;
+ }
+ .valor{
+   color: rgb(241, 8, 8);
+   height: 30px;
+   width: 400px;
+   font-size: 20px;
+   padding: 10px 0px 10px;
+   background-color: white;
+ }
+ .slc{
+  width: 300px;
+  height: 80px;
+ }

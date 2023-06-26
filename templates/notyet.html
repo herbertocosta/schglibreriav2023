@@ -1,0 +1,54 @@
+{% extends "mastertemplate.html" %}
+
+{% block head %}
+<title>EN DESARROLLO</title>
+{% endblock %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/estilosSass.css')}}">
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block body %}
+<div class="row">
+    <!-- MENSAJES DE ERROR-->
+    <div class="col-md-5">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% if mensaje.0 %}
+        {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert"> -->
+            <!-- <div class="alert alert-success alert-dismissible fade show" role="alert"> -->
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if mensaje.1 %}
+        {% for message in messages %}
+        <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert"> -->
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <!-- <div class="alert alert-success alert-dismissible fade show" role="alert"> -->
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endif %}
+        {% endwith %}
+    </div>
+        <form class="mt-5 " action="{{url_for('Index')}}" method="POST">
+            <img class="mt-5" src="/static/img/notyet.jpg" alt="">
+        </form>
+</div>
+{% endblock %}
+{% block footer %}
+<script src="{{url_for('static', filename='js/main.js')}}"></script>
+{% endblock %}

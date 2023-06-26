@@ -1,0 +1,74 @@
+{% extends "mastertemplate.html" %}
+
+{% block head%}
+<title>DOCENTE - PUBLICAR MATERIAL</title>
+{% endblock %}
+
+{% block estilos%}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/estilosSass.css')}}"class="">
+{% endblock %}
+
+{% block header %}
+{% for opcion in options %}
+<li><a href="{{url_for(opcion.1)}}">{{opcion.0}} <i class="{{opcion.2}}"></i></a></li>
+{% endfor %}
+{% endblock %}
+{% block body %}
+<!-- MENSAJES DE ERROR-->
+<div class="row">
+    <div class="col-md-5">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% if mensaje.0 %}
+        {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if mensaje.1 %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+<!-- CUERPO PRINCIPAL -->
+        <div class="container-fluid">
+          <div class="input-group mt-2 ">
+              <input class="form-control col-md-5" type="text" readonly value="{{titulo}}">
+              <input class="form-control col-md-4" type="text" readonly value="{{materia}}">
+              <input class="form-control col-md-3" type="text" readonly value="{{curso}}">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <table class="table table-sm table-bordered mt-2 ">
+                    <thead>
+                    <tr >
+                        <th class="col col-1"><input type="checkbox" id="todos"></th>
+                        <th class="col col-4">ALUMNO</th>
+                    </tr>
+                </thead >
+                <tbody>
+                    {% for alumnos in listalumnos %}
+                    <tr>
+                        <td class="col col-1" ><input type="checkbox"></td>
+                        <td class="col col-4" >nombre alumno</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+{% endblock %}

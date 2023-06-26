@@ -1,0 +1,78 @@
+{% extends "mastertemplate.html" %}
+
+{% block head%}
+<title>ALUMNO - CONSULTA MATERIAL</title>
+{% endblock %}
+
+{% block estilos%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/estilosSass.css')}}">
+{% endblock %}
+
+{% block header %}
+{% for opcion in options %}
+<li><a href="{{url_for(opcion.1)}}">{{opcion.0}} <i class="{{opcion.2}}"></i></a></li>
+{% endfor %}
+{% endblock %}
+{% block body %}
+<!-- MENSAJES DE ERROR-->
+<div class="row">
+    <div class="col-md-5">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% if mensaje.0 %}
+        {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if mensaje.1 %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+<!-- CUERPO PRINCIPAL -->
+      <table class="body-table table">
+        <thead>
+          <tr>
+            <th class="col-md-1" scope="col">#</th>
+            <th class="col-md-4" scope="col">TITULO</th>
+            <th class="col-md-4" scope="col">CURSO</th>
+            <th class="col-md-3" scope="col">MATERIA</th>
+            <th class="col-md-3" scope="col">VOLUMEN</th>
+            <th class="col-md-3" scope="col">VALOR</th>
+            <th class="col-md-3" scope="col">FECHA</th>
+            <th class="col-md-1" scope="col">OPCIÓN</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <form action="" method="GET">
+        {% for material in listmaterial %}
+          <tr>
+            <td class="col-md-1" scope="row">{{material.0}}</td>
+            <td class="col-md-3" scope="">{{material.1}}</td>
+            <td class="col-md-3" scope="">{{material.2}}</td>
+            <td class="col-md-3" scope="">{{material.3}}</td>
+            <td class="col-md-1" scope="">{{material.4}}</td>
+            <td class="col-md-1" scope="">{{material.5}}</td>
+            <td class="col-md-1" scope="">{{material.6}}</td>
+            <td class="col-md-1 btn-group btn-group-sm" scope=""><button class="btn btn-danger" type="submit" formaction="/templates/notyet.html"><i class="bi bi-journal-x"></i></button>
+            <button class="btn btn-success" type="submit" formaction="/doc_publish/{{material.0}}"><i class="bi bi-journal-check"></i></button></td>
+          </tr>
+        {% endfor %}
+        </form>
+        </tbody>
+      </table>
+{% endblock %}
