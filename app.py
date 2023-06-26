@@ -7,6 +7,7 @@ from werkzeug.datastructures import FileStorage
 import controladorapp
 
 opciones = {}
+
 user = ""
 
 # initializations
